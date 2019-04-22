@@ -1,0 +1,58 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-cidade-heading">Create or edit a Cidade</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!cidade.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="cidade.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_nome">Nome</label>
+                    <input type="text" class="form-control" name="nome" id="field_nome"
+                        [(ngModel)]="cidade.nome" required/>
+                    <div [hidden]="!(editForm.controls.nome?.dirty && editForm.controls.nome?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.nome?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_latitude">Latitude</label>
+                    <input type="text" class="form-control" name="latitude" id="field_latitude"
+                        [(ngModel)]="cidade.latitude" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_longitude">Longitude</label>
+                    <input type="text" class="form-control" name="longitude" id="field_longitude"
+                        [(ngModel)]="cidade.longitude" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_estado">Estado</label>
+                    <select class="form-control" id="field_estado" name="estado" [(ngModel)]="cidade.estado"  required>
+                        <option *ngIf="!editForm.value.estado" [ngValue]="null" selected></option>
+                        <option [ngValue]="estadoOption.id === cidade.estado?.id ? cidade.estado : estadoOption" *ngFor="let estadoOption of estados; trackBy: trackEstadoById">{{estadoOption.nome}}</option>
+                    </select>
+                </div>
+                <div [hidden]="!(editForm.controls.estado?.dirty && editForm.controls.estado?.invalid)">
+                    <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.estado?.errors?.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

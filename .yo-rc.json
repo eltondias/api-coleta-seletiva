@@ -1,0 +1,35 @@
+{
+    "generator-jhipster": {
+        "promptValues": {
+            "packageName": "com.coletaseletiva.api"
+        },
+        "jhipsterVersion": "5.8.2",
+        "applicationType": "monolith",
+        "baseName": "coletaseletiva",
+        "packageName": "com.coletaseletiva.api",
+        "packageFolder": "com/coletaseletiva/api",
+        "serverPort": "8080",
+        "authenticationType": "jwt",
+        "cacheProvider": "ehcache",
+        "enableHibernateCache": true,
+        "websocket": false,
+        "databaseType": "sql",
+        "devDatabaseType": "mysql",
+        "prodDatabaseType": "mysql",
+        "searchEngine": false,
+        "messageBroker": false,
+        "serviceDiscoveryType": false,
+        "buildTool": "maven",
+        "enableSwaggerCodegen": false,
+        "jwtSecretKey": "ZTExNGZiYjc0YWQ3NGViZDAyNWY3MzQyMmUzNGExNzI5MDQxOWIyNjgwZDZjYTZjN2U5NGFjMTBhYjU4YzExM2VlMmE5MWE2MDFhZGMwMTVmMTNlNmI1ZWVkODgzMmNmM2FiOWM2MTM2YTgwZjdhYTQyMzg4NTA1Mzk2MmMyNWM=",
+        "clientFramework": "angularX",
+        "useSass": false,
+        "clientPackageManager": "npm",
+        "testFrameworks": [],
+        "jhiPrefix": "jhi",
+        "entitySuffix": "",
+        "dtoSuffix": "DTO",
+        "otherModules": [],
+        "enableTranslation": false
+    }
+}

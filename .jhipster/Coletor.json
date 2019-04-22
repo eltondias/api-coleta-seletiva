@@ -1,0 +1,56 @@
+{
+    "name": "Coletor",
+    "fields": [
+        {
+            "fieldName": "nome",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "dataCadastro",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "tipo",
+            "fieldType": "TipoColetor",
+            "fieldValues": "PESSOA,EMPRESA,COOPERATIVA",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "participante",
+            "otherEntityRelationshipName": "coletor",
+            "relationshipValidateRules": "required",
+            "relationshipName": "participante",
+            "otherEntityField": "nome",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "retirada",
+            "otherEntityRelationshipName": "coletor",
+            "relationshipName": "retirada"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "tipoResiduo",
+            "otherEntityRelationshipName": "coletor",
+            "relationshipValidateRules": "required",
+            "relationshipName": "tipoResiduo",
+            "otherEntityField": "nome",
+            "ownerSide": true
+        }
+    ],
+    "changelogDate": "20190421215843",
+    "entityTableName": "coletor",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

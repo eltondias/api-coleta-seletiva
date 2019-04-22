@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity SolicitacaoRetirada.
+    -->
+    <changeSet id="20190421215845-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="solicitacao_retirada_id"
+                                 baseTableName="solicitacao_retirada_tipo_residuo"
+                                 constraintName="fk_solicitacao_retirada_tipo_residuo_solicitacao_retirada_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="solicitacao_retirada"/>
+        <addForeignKeyConstraint baseColumnNames="tipo_residuo_id"
+                                 baseTableName="solicitacao_retirada_tipo_residuo"
+                                 constraintName="fk_solicitacao_retirada_tipo_residuo_tipo_residuo_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="tipo_residuo"/>
+        
+        <addForeignKeyConstraint baseColumnNames="produtor_id"
+                                 baseTableName="solicitacao_retirada"
+                                 constraintName="fk_solicitacao_retirada_produtor_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="produtor"/>
+
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190421215835_added_entity_Estado.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190421215836_added_entity_Cidade.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190421215837_added_entity_Endereco.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190421215838_added_entity_Participante.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190421215839_added_entity_Telefone.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190421215840_added_entity_Email.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190421215841_added_entity_RedeSocial.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190421215842_added_entity_Usuario.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190421215843_added_entity_Coletor.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190421215844_added_entity_Produtor.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190421215845_added_entity_SolicitacaoRetirada.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190421215846_added_entity_TipoResiduo.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190421215847_added_entity_Retirada.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190421215848_added_entity_HorarioPreferencialRetirada.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190421215849_added_entity_Imagem.xml" relativeToChangelogFile="false"/>
+    <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20190421215836_added_entity_constraints_Cidade.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190421215837_added_entity_constraints_Endereco.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190421215839_added_entity_constraints_Telefone.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190421215840_added_entity_constraints_Email.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190421215841_added_entity_constraints_RedeSocial.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190421215842_added_entity_constraints_Usuario.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190421215843_added_entity_constraints_Coletor.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190421215844_added_entity_constraints_Produtor.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190421215845_added_entity_constraints_SolicitacaoRetirada.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190421215847_added_entity_constraints_Retirada.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190421215848_added_entity_constraints_HorarioPreferencialRetirada.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190421215849_added_entity_constraints_Imagem.xml" relativeToChangelogFile="false"/>
+    <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
+</databaseChangeLog>

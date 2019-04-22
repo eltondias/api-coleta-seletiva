@@ -1,0 +1,47 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="participante">
+            <h2><span>Participante</span> {{participante.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Nome</span></dt>
+                <dd>
+                    <span>{{participante.nome}}</span>
+                </dd>
+                <dt><span>Url Foto Perfil</span></dt>
+                <dd>
+                    <span>{{participante.urlFotoPerfil}}</span>
+                </dd>
+                <dt><span>Cpf Cnpj</span></dt>
+                <dd>
+                    <span>{{participante.cpfCnpj}}</span>
+                </dd>
+                <dt><span>Data Cadastro</span></dt>
+                <dd>
+                    <span>{{participante.dataCadastro}}</span>
+                </dd>
+                <dt><span>Ranking</span></dt>
+                <dd>
+                    <span>{{participante.ranking}}</span>
+                </dd>
+                <dt><span>Estado</span></dt>
+                <dd>
+                    <span>{{participante.estado}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/participante', participante.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

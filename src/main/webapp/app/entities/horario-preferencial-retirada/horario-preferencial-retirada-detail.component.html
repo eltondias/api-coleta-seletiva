@@ -1,0 +1,33 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="horarioPreferencialRetirada">
+            <h2><span>Horario Preferencial Retirada</span> {{horarioPreferencialRetirada.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Data Hora</span></dt>
+                <dd>
+                    <span>{{horarioPreferencialRetirada.dataHora}}</span>
+                </dd>
+                <dt><span>Solicitacao Retirada</span></dt>
+                <dd>
+                    <div *ngIf="horarioPreferencialRetirada.solicitacaoRetirada">
+                        <a [routerLink]="['/solicitacao-retirada', horarioPreferencialRetirada.solicitacaoRetirada?.id, 'view']">{{horarioPreferencialRetirada.solicitacaoRetirada?.descricao}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/horario-preferencial-retirada', horarioPreferencialRetirada.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

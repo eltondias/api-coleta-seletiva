@@ -1,0 +1,37 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="redeSocial">
+            <h2><span>Rede Social</span> {{redeSocial.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Tipo Rede Social</span></dt>
+                <dd>
+                    <span>{{redeSocial.tipoRedeSocial}}</span>
+                </dd>
+                <dt><span>Url</span></dt>
+                <dd>
+                    <span>{{redeSocial.url}}</span>
+                </dd>
+                <dt><span>Participante</span></dt>
+                <dd>
+                    <div *ngIf="redeSocial.participante">
+                        <a [routerLink]="['/participante', redeSocial.participante?.id, 'view']">{{redeSocial.participante?.nome}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/rede-social', redeSocial.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

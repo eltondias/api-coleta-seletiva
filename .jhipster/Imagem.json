@@ -1,0 +1,32 @@
+{
+    "name": "Imagem",
+    "fields": [
+        {
+            "fieldName": "url",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "descricao",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "solicitacaoRetirada",
+            "otherEntityRelationshipName": "imagem",
+            "relationshipValidateRules": "required",
+            "relationshipName": "solicitacaoRetirada",
+            "otherEntityField": "descricao"
+        }
+    ],
+    "changelogDate": "20190421215849",
+    "entityTableName": "imagem",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

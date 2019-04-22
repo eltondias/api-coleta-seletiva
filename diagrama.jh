@@ -1,0 +1,138 @@
+
+
+
+
+entity Estado {
+    nome String required
+    sigla String required
+    latitude String
+    longitude String 
+}
+entity Cidade {
+    nome String required
+    latitude String
+    longitude String  
+}
+
+entity Endereco {
+    logradouro String required
+    numero String required
+    complemento String 
+    bairro String required
+    cep String 
+    latitude String
+    longitude String 
+}
+
+entity Participante {
+  	nome   String required   
+    urlFotoPerfil   String 
+    cpfCnpj  String required
+    dataCadastro   Instant
+    ranking   Integer
+    estado EstadoParticipante required
+}
+
+entity Telefone {
+	ddd String
+    numero String
+}
+
+entity Email {
+	email String
+}
+
+entity RedeSocial {
+	tipoRedeSocial TipoRedeSocial
+    url String
+}
+
+entity Usuario {
+	login String
+    senha String
+    dataCadastro   Instant
+}
+
+entity Coletor {
+  nome   String   
+  dataCadastro   Instant
+  tipo TipoColetor required
+}
+
+entity Produtor {  
+   nome   String   
+   dataCadastro   Instant
+   tipo TipoProdutor required
+}
+
+entity SolicitacaoRetirada {  
+  descricao String
+  dataHora   Instant
+}
+
+entity TipoResiduo {  
+  nome String
+  descricao   String
+  cor   String
+  icone   String
+}
+
+
+entity Retirada {  
+  dataHoraAgendada   Instant
+  dataHoraRealizada   Instant
+  dataHoraConfirmacao   Instant
+}
+
+entity HorarioPreferencialRetirada {  
+  	dataHora   Instant
+}
+
+entity Imagem {  
+  url   String
+  descricao   String
+}
+
+enum TipoColetor {
+    PESSOA, EMPRESA, COOPERATIVA
+}
+
+enum TipoProdutor {
+    RESIDENCIAL, COMERCIAL, INDUSTRIAL, GOVERNAMENTAL, EDUCACIONAL, CONDOMINIAL
+}
+
+enum EstadoParticipante {
+    ATIVO, INATIVO, SUSPENSO
+}
+
+enum TipoRedeSocial {
+    FACEBOOK, TWITER, LINKEDIN, INSTAGRAN, YOUTUBE
+}
+
+relationship OneToOne {
+	Coletor{participante(nome) required} to Participante 
+    Produtor{participante(nome) required} to Participante
+	Retirada{ solicitacaoRetirada(descricao) required} to  SolicitacaoRetirada 
+    Usuario{participante(nome) required}  to Participante{usuario}
+}
+
+relationship OneToMany {
+ 	SolicitacaoRetirada  to HorarioPreferencialRetirada { solicitacaoRetirada(descricao) required} 
+    SolicitacaoRetirada  to Imagem  { solicitacaoRetirada(descricao) required}
+    Estado{cidade} to Cidade{estado(nome) required} 
+    Cidade{endereco} to Endereco{cidade(nome) required} 
+    Participante{endereco} to Endereco{participante(nome) required} 
+    Produtor{solicitacaoRetirada} to SolicitacaoRetirada{ produtor(nome) required }   
+	Participante{telefone} to Telefone{participante(nome) required} 
+	Participante{email} to Email{participante(nome) required} 
+    Participante{redeSocial} to RedeSocial{participante(nome) required} 
+	Coletor to Retirada {coletor(nome) required} 
+}
+relationship ManyToMany {
+  SolicitacaoRetirada{tipoResiduo(nome) required}  to TipoResiduo {solicitacaoRetirada(descricao)}
+  Coletor{tipoResiduo(nome) required} to TipoResiduo {coletor(nome)}  
+}
+ 
+
+
+

@@ -1,0 +1,32 @@
+{
+    "name": "Telefone",
+    "fields": [
+        {
+            "fieldName": "ddd",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "numero",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "participante",
+            "otherEntityRelationshipName": "telefone",
+            "relationshipValidateRules": "required",
+            "relationshipName": "participante",
+            "otherEntityField": "nome"
+        }
+    ],
+    "changelogDate": "20190421215839",
+    "entityTableName": "telefone",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

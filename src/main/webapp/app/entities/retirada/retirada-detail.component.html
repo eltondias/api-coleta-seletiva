@@ -1,0 +1,47 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="retirada">
+            <h2><span>Retirada</span> {{retirada.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Data Hora Agendada</span></dt>
+                <dd>
+                    <span>{{retirada.dataHoraAgendada}}</span>
+                </dd>
+                <dt><span>Data Hora Realizada</span></dt>
+                <dd>
+                    <span>{{retirada.dataHoraRealizada}}</span>
+                </dd>
+                <dt><span>Data Hora Confirmacao</span></dt>
+                <dd>
+                    <span>{{retirada.dataHoraConfirmacao}}</span>
+                </dd>
+                <dt><span>Solicitacao Retirada</span></dt>
+                <dd>
+                    <div *ngIf="retirada.solicitacaoRetirada">
+                        <a [routerLink]="['/solicitacao-retirada', retirada.solicitacaoRetirada?.id, 'view']">{{retirada.solicitacaoRetirada?.descricao}}</a>
+                    </div>
+                </dd>
+                <dt><span>Coletor</span></dt>
+                <dd>
+                    <div *ngIf="retirada.coletor">
+                        <a [routerLink]="['/coletor', retirada.coletor?.id, 'view']">{{retirada.coletor?.nome}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/retirada', retirada.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

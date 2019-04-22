@@ -1,0 +1,60 @@
+<div>
+    <h2 id="page-heading">
+        <span>Horario Preferencial Retiradas</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-horario-preferencial-retirada" [routerLink]="['/horario-preferencial-retirada/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Horario Preferencial Retirada
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="horarioPreferencialRetiradas">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Data Hora</span></th>
+            <th><span>Solicitacao Retirada</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let horarioPreferencialRetirada of horarioPreferencialRetiradas ;trackBy: trackId">
+                <td><a [routerLink]="['/horario-preferencial-retirada', horarioPreferencialRetirada.id, 'view' ]">{{horarioPreferencialRetirada.id}}</a></td>
+                <td>{{horarioPreferencialRetirada.dataHora | date:'medium'}}</td>
+                <td>
+                    <div *ngIf="horarioPreferencialRetirada.solicitacaoRetirada">
+                        <a [routerLink]="['../solicitacao-retirada', horarioPreferencialRetirada.solicitacaoRetirada?.id, 'view' ]" >{{horarioPreferencialRetirada.solicitacaoRetirada?.descricao}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/horario-preferencial-retirada', horarioPreferencialRetirada.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/horario-preferencial-retirada', horarioPreferencialRetirada.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'horario-preferencial-retirada', { outlets: { popup: horarioPreferencialRetirada.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

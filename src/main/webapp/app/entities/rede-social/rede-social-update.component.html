@@ -1,0 +1,52 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-rede-social-heading">Create or edit a Rede Social</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!redeSocial.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="redeSocial.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_tipoRedeSocial">Tipo Rede Social</label>
+                    <select class="form-control" name="tipoRedeSocial" [(ngModel)]="redeSocial.tipoRedeSocial" id="field_tipoRedeSocial" >
+                        <option value="FACEBOOK">FACEBOOK</option>
+                        <option value="TWITER">TWITER</option>
+                        <option value="LINKEDIN">LINKEDIN</option>
+                        <option value="INSTAGRAN">INSTAGRAN</option>
+                        <option value="YOUTUBE">YOUTUBE</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_url">Url</label>
+                    <input type="text" class="form-control" name="url" id="field_url"
+                        [(ngModel)]="redeSocial.url" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_participante">Participante</label>
+                    <select class="form-control" id="field_participante" name="participante" [(ngModel)]="redeSocial.participante"  required>
+                        <option *ngIf="!editForm.value.participante" [ngValue]="null" selected></option>
+                        <option [ngValue]="participanteOption.id === redeSocial.participante?.id ? redeSocial.participante : participanteOption" *ngFor="let participanteOption of participantes; trackBy: trackParticipanteById">{{participanteOption.nome}}</option>
+                    </select>
+                </div>
+                <div [hidden]="!(editForm.controls.participante?.dirty && editForm.controls.participante?.invalid)">
+                    <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.participante?.errors?.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,68 @@
+<div>
+    <h2 id="page-heading">
+        <span>Solicitacao Retiradas</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-solicitacao-retirada" [routerLink]="['/solicitacao-retirada/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Solicitacao Retirada
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="solicitacaoRetiradas">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Descricao</span></th>
+            <th><span>Data Hora</span></th>
+            <th><span>Tipo Residuo</span></th>
+            <th><span>Produtor</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let solicitacaoRetirada of solicitacaoRetiradas ;trackBy: trackId">
+                <td><a [routerLink]="['/solicitacao-retirada', solicitacaoRetirada.id, 'view' ]">{{solicitacaoRetirada.id}}</a></td>
+                <td>{{solicitacaoRetirada.descricao}}</td>
+                <td>{{solicitacaoRetirada.dataHora | date:'medium'}}</td>
+                <td>
+                    <span *ngFor="let tipoResiduo of solicitacaoRetirada.tipoResiduos; let last = last">
+                            <a class="form-control-static" [routerLink]="['../tipo-residuo', tipoResiduo?.id, 'view' ]">{{tipoResiduo.nome}}</a>{{last ? '' : ', '}}
+                        </span>
+                </td>
+                <td>
+                    <div *ngIf="solicitacaoRetirada.produtor">
+                        <a [routerLink]="['../produtor', solicitacaoRetirada.produtor?.id, 'view' ]" >{{solicitacaoRetirada.produtor?.nome}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/solicitacao-retirada', solicitacaoRetirada.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/solicitacao-retirada', solicitacaoRetirada.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'solicitacao-retirada', { outlets: { popup: solicitacaoRetirada.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

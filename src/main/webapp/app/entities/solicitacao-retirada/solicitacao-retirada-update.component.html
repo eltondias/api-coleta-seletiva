@@ -1,0 +1,61 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-solicitacao-retirada-heading">Create or edit a Solicitacao Retirada</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!solicitacaoRetirada.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="solicitacaoRetirada.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_descricao">Descricao</label>
+                    <input type="text" class="form-control" name="descricao" id="field_descricao"
+                        [(ngModel)]="solicitacaoRetirada.descricao" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_dataHora">Data Hora</label>
+                    <div class="d-flex">
+                        <input id="field_dataHora" type="datetime-local" class="form-control" name="dataHora" [(ngModel)]="dataHora" placeholder="YYYY-MM-DD HH:mm"
+                        />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="field_tipoResiduo">Tipo Residuo</label>
+                    <select class="form-control" id="field_tipoResiduo" multiple name="tipoResiduo" [(ngModel)]="solicitacaoRetirada.tipoResiduos" required>
+                        <option [ngValue]="getSelected(solicitacaoRetirada.tipoResiduos, tipoResiduoOption)" *ngFor="let tipoResiduoOption of tiporesiduos; trackBy: trackTipoResiduoById">{{tipoResiduoOption.nome}}</option>
+                    </select>
+                </div>
+                <div [hidden]="!(editForm.controls.tipoResiduo?.dirty && editForm.controls.tipoResiduo?.invalid)">
+                    <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.tipoResiduo?.errors?.required">
+                        This field is required.
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_produtor">Produtor</label>
+                    <select class="form-control" id="field_produtor" name="produtor" [(ngModel)]="solicitacaoRetirada.produtor"  required>
+                        <option *ngIf="!editForm.value.produtor" [ngValue]="null" selected></option>
+                        <option [ngValue]="produtorOption.id === solicitacaoRetirada.produtor?.id ? solicitacaoRetirada.produtor : produtorOption" *ngFor="let produtorOption of produtors; trackBy: trackProdutorById">{{produtorOption.nome}}</option>
+                    </select>
+                </div>
+                <div [hidden]="!(editForm.controls.produtor?.dirty && editForm.controls.produtor?.invalid)">
+                    <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.produtor?.errors?.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+{
+    "name": "Produtor",
+    "fields": [
+        {
+            "fieldName": "nome",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "dataCadastro",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "tipo",
+            "fieldType": "TipoProdutor",
+            "fieldValues": "RESIDENCIAL,COMERCIAL,INDUSTRIAL,GOVERNAMENTAL,EDUCACIONAL,CONDOMINIAL",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "participante",
+            "otherEntityRelationshipName": "produtor",
+            "relationshipValidateRules": "required",
+            "relationshipName": "participante",
+            "otherEntityField": "nome",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "solicitacaoRetirada",
+            "otherEntityRelationshipName": "produtor",
+            "relationshipName": "solicitacaoRetirada"
+        }
+    ],
+    "changelogDate": "20190421215844",
+    "entityTableName": "produtor",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

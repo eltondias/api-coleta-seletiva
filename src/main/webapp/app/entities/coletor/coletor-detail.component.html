@@ -1,0 +1,47 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="coletor">
+            <h2><span>Coletor</span> {{coletor.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Nome</span></dt>
+                <dd>
+                    <span>{{coletor.nome}}</span>
+                </dd>
+                <dt><span>Data Cadastro</span></dt>
+                <dd>
+                    <span>{{coletor.dataCadastro}}</span>
+                </dd>
+                <dt><span>Tipo</span></dt>
+                <dd>
+                    <span>{{coletor.tipo}}</span>
+                </dd>
+                <dt><span>Participante</span></dt>
+                <dd>
+                    <div *ngIf="coletor.participante">
+                        <a [routerLink]="['/participante', coletor.participante?.id, 'view']">{{coletor.participante?.nome}}</a>
+                    </div>
+                </dd>
+                <dt><span>Tipo Residuo</span></dt>
+                <dd>
+                    <span *ngFor="let tipoResiduo of coletor.tipoResiduos; let last = last">
+                        <a [routerLink]="['/tipo-residuo', tipoResiduo?.id, 'view' ]">{{tipoResiduo.nome}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/coletor', coletor.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

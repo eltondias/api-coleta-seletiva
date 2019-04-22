@@ -1,0 +1,45 @@
+{
+    "name": "Retirada",
+    "fields": [
+        {
+            "fieldName": "dataHoraAgendada",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "dataHoraRealizada",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "dataHoraConfirmacao",
+            "fieldType": "Instant"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "solicitacaoRetirada",
+            "otherEntityRelationshipName": "retirada",
+            "relationshipValidateRules": "required",
+            "relationshipName": "solicitacaoRetirada",
+            "otherEntityField": "descricao",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "coletor",
+            "otherEntityRelationshipName": "retirada",
+            "relationshipValidateRules": "required",
+            "relationshipName": "coletor",
+            "otherEntityField": "nome"
+        }
+    ],
+    "changelogDate": "20190421215847",
+    "entityTableName": "retirada",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

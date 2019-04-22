@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Coletor.
+    -->
+    <changeSet id="20190421215843-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="participante_id"
+                                 baseTableName="coletor"
+                                 constraintName="fk_coletor_participante_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="participante"/>
+
+        <addForeignKeyConstraint baseColumnNames="coletor_id"
+                                 baseTableName="coletor_tipo_residuo"
+                                 constraintName="fk_coletor_tipo_residuo_coletor_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="coletor"/>
+        <addForeignKeyConstraint baseColumnNames="tipo_residuo_id"
+                                 baseTableName="coletor_tipo_residuo"
+                                 constraintName="fk_coletor_tipo_residuo_tipo_residuo_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="tipo_residuo"/>
+        
+    </changeSet>
+</databaseChangeLog>

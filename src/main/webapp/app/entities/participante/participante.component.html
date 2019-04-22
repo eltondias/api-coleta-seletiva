@@ -1,0 +1,64 @@
+<div>
+    <h2 id="page-heading">
+        <span>Participantes</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-participante" [routerLink]="['/participante/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Participante
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="participantes">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Nome</span></th>
+            <th><span>Url Foto Perfil</span></th>
+            <th><span>Cpf Cnpj</span></th>
+            <th><span>Data Cadastro</span></th>
+            <th><span>Ranking</span></th>
+            <th><span>Estado</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let participante of participantes ;trackBy: trackId">
+                <td><a [routerLink]="['/participante', participante.id, 'view' ]">{{participante.id}}</a></td>
+                <td>{{participante.nome}}</td>
+                <td>{{participante.urlFotoPerfil}}</td>
+                <td>{{participante.cpfCnpj}}</td>
+                <td>{{participante.dataCadastro | date:'medium'}}</td>
+                <td>{{participante.ranking}}</td>
+                <td>{{participante.estado}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/participante', participante.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/participante', participante.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'participante', { outlets: { popup: participante.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

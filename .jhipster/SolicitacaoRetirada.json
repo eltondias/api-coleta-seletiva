@@ -1,0 +1,53 @@
+{
+    "name": "SolicitacaoRetirada",
+    "fields": [
+        {
+            "fieldName": "descricao",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "dataHora",
+            "fieldType": "Instant"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "horarioPreferencialRetirada",
+            "otherEntityRelationshipName": "solicitacaoRetirada",
+            "relationshipName": "horarioPreferencialRetirada"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "imagem",
+            "otherEntityRelationshipName": "solicitacaoRetirada",
+            "relationshipName": "imagem"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "tipoResiduo",
+            "otherEntityRelationshipName": "solicitacaoRetirada",
+            "relationshipValidateRules": "required",
+            "relationshipName": "tipoResiduo",
+            "otherEntityField": "nome",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "produtor",
+            "otherEntityRelationshipName": "solicitacaoRetirada",
+            "relationshipValidateRules": "required",
+            "relationshipName": "produtor",
+            "otherEntityField": "nome"
+        }
+    ],
+    "changelogDate": "20190421215845",
+    "entityTableName": "solicitacao_retirada",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

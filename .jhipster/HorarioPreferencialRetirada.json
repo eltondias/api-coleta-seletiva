@@ -1,0 +1,28 @@
+{
+    "name": "HorarioPreferencialRetirada",
+    "fields": [
+        {
+            "fieldName": "dataHora",
+            "fieldType": "Instant"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "solicitacaoRetirada",
+            "otherEntityRelationshipName": "horarioPreferencialRetirada",
+            "relationshipValidateRules": "required",
+            "relationshipName": "solicitacaoRetirada",
+            "otherEntityField": "descricao"
+        }
+    ],
+    "changelogDate": "20190421215848",
+    "entityTableName": "horario_preferencial_retirada",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

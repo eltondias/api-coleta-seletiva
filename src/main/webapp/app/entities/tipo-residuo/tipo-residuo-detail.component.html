@@ -1,0 +1,39 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="tipoResiduo">
+            <h2><span>Tipo Residuo</span> {{tipoResiduo.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Nome</span></dt>
+                <dd>
+                    <span>{{tipoResiduo.nome}}</span>
+                </dd>
+                <dt><span>Descricao</span></dt>
+                <dd>
+                    <span>{{tipoResiduo.descricao}}</span>
+                </dd>
+                <dt><span>Cor</span></dt>
+                <dd>
+                    <span>{{tipoResiduo.cor}}</span>
+                </dd>
+                <dt><span>Icone</span></dt>
+                <dd>
+                    <span>{{tipoResiduo.icone}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/tipo-residuo', tipoResiduo.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,81 @@
+{
+    "name": "Participante",
+    "fields": [
+        {
+            "fieldName": "nome",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "urlFotoPerfil",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "cpfCnpj",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "dataCadastro",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "ranking",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "estado",
+            "fieldType": "EstadoParticipante",
+            "fieldValues": "ATIVO,INATIVO,SUSPENSO",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "endereco",
+            "otherEntityRelationshipName": "participante",
+            "relationshipName": "endereco"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "telefone",
+            "otherEntityRelationshipName": "participante",
+            "relationshipName": "telefone"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "email",
+            "otherEntityRelationshipName": "participante",
+            "relationshipName": "email"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "redeSocial",
+            "otherEntityRelationshipName": "participante",
+            "relationshipName": "redeSocial"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "usuario",
+            "otherEntityRelationshipName": "participante",
+            "relationshipName": "usuario",
+            "ownerSide": false
+        }
+    ],
+    "changelogDate": "20190421215838",
+    "entityTableName": "participante",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}
